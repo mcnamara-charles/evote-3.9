@@ -3,8 +3,6 @@ E-Vote
 
 E-Vote is an open source system for secure, trusted, anonymous, and verifiable voting online.  It is based on the [web2py](http://web2py.com/) framework.
 
-(The algorithms implemented here are also available standalone in https://github.com/mdipierro/evote_ranking wihtout database and they do not depend on web2py. The workflow is implemented there using the filesystem)
-
 Overview
 --------
 
@@ -21,7 +19,7 @@ E-Vote uses the [web2py](http://web2py.com/) framework and can be installed like
 
       $ git clone --recursive https://github.com/web2py/web2py.git
       $ cd web2py/applications
-      $ git clone https://github.com/mdipierro/evote.git
+      $ git clone https://github.com/mcnamara-charles/evote-3.9.git
       $ cd ..
       $ sudo /etc/init.d/apachectl stop  # <-- stop other web server if needed
       $ pip install rsa
