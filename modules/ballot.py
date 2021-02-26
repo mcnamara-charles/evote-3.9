@@ -24,6 +24,7 @@ def rsakeys():
 
 def sign(text,privkey_pem):
     privkey = rsa.PrivateKey.load_pkcs1(privkey_pem)
+    text = bytes(text, 'utf-8')
     signature = base64.b16encode(rsa.sign(text,privkey,'SHA-1'))
     return signature
 
@@ -34,7 +35,7 @@ def ballot2form(ballot_model, readonly=False, vars=None, counters=None):
     ballot_structure = json.loads(ballot_model)
     ballot = FORM()
     for question in ballot_structure:
-        div =DIV(_class="question")
+        div = DIV(_class="question")
         ballot.append(div)
         html = MARKMIN(question['preamble'])
         div.append(html)
@@ -73,11 +74,11 @@ def ballot2form(ballot_model, readonly=False, vars=None, counters=None):
     return ballot
 
 def form2ballot(ballot_model, token, vars, results):
-    ballot_content = ballot2form(ballot_model, readonly=True, vars=vars).xml()
-    if token: ballot_content += '<pre>\n%s\n</pre>' % token
+    ballot_content = str(ballot2form(ballot_model, readonly=True, vars=vars).xml())
+    if token: ballot_content += '<pre>%s</pre>' % str(token)
     return '<div class="ballot">%s</div>' % ballot_content.strip()
 
 def blank_ballot(token):
-    ballot_content = '<h2>Blank</h2>'
-    if token: ballot_content += '<pre>\n%s\n</pre>' % token
+    ballot_content = str('<h2>Blank</h2>')
+    if token: ballot_content += '<pre>%s</pre>' % str(token)
     return '<div class="ballot">%s</div>' % ballot_content
