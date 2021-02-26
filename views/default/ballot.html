@@ -3,13 +3,15 @@
 <div class="container max900">
   <div class="fill">
     <div class="padded">
+      <h2 class="ballot-title">Ballot</h2>
+      <p>Results are slightly hidden by default for anonymity in office and business settings when reviewing a personal ballot. To more actively percieve your results, hover and or click on results</p>
 
       {{=XML(ballot.ballot_content)}}
-      
+
       <pre style="overflow-x:scroll">{{=ballot.signature}}</pre>
-      
+
       <p>{{=T('The signature is an RSA digital signature generated from the ballot content and the election private_key')}}</p>
-      
+
       {{=A(T('Election Results'),_href=URL('results',args=ballot.election_id),_class="btn")}}
       {{=A(T('Ballots'),_href=URL('ballots',args=ballot.election_id),_class="btn")}}
       {{=A(T('Ballot Verification Code'),_href=URL('ballot_verifier.py',args=request.args),_class="btn")}}
