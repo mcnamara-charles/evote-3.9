@@ -32,6 +32,12 @@ To deploy at the root of the site (e.g., at http://127.0.0.1:8000/ instead of ht
 
 To deploy E-Vote in production, you may want to go to [web2py.com](http://web2py.com) and learn more about deploying web2py-based applications in general.  If you're in a hurry, see `scripts/setup-*.sh` in the web2py tree.  One common way to deploy web2py applications is with WSGI under Apache HTTPD: in the web2py tree, copy `handlers/wsgihandler.py` to the top level of the tree, and set the appropriate WSGI options in the Apache configuration.  See the [Deployment recipes](http://web2py.com/book/default/chapter/13) chapter in the web2py manual for more.
 
+
+Configuring Email
+-----------------
+
+E-Vote utilizes simple smtp protocol to send emails. To properly configure the sender and server update private/appconfig.ini. Set sender equal to your preferred email address. set server equal to your email service provider's smtp server and the port, seperating the server and the port with a colon, for example, gmail's server is smtp.gmail.com and the port that uses TLS is 587 so the statement would look like "server = smtp.gmail.com:587". Set login to emailaddress:emailpassword with those values being swapped out for your own
+
 Administrating E-Vote
 ---------------------
 
