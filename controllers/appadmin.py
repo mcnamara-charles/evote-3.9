@@ -13,14 +13,19 @@ import gluon.fileutils
 
 try:
     import pygraphviz as pgv
+    print("pygraphviz module Imported")
 except ImportError:
+    print("pygraphviz Import Failed")
     pgv = None
 
 # ## critical --- make a copy of the environment
-
+# ## copy.copy --- copies the instance of an item instead of creating a binding
+# ## glabals() --- a Global symbol table stores all information related to the global scope of the program
 global_env = copy.copy(globals())
 global_env['datetime'] = datetime
 
+
+# ## No Idea what these lines do
 http_host = request.env.http_host.split(':')[0]
 remote_addr = request.env.remote_addr
 try:
