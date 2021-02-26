@@ -69,8 +69,7 @@ def start_callback():
                 ballot_counter+=1
                 ballot_uuid = 'ballot-%i-%.6i' % (election.id,ballot_counter)
                 blank_ballot_content = blank_ballot(ballot_uuid)
-                signature = 'signature-'+sign(blank_ballot_content,
-                                              election.private_key)
+                signature = 'signature-' + str(sign(blank_ballot_content, election.private_key))
                 db.ballot.insert(
                     election_id=election.id,
                     ballot_content = blank_ballot_content,
@@ -290,10 +289,10 @@ def ballots():
 
 # @auth.requires(auth.user and auth.user.is_manager)
 def email_voter_and_managers(election,voter,ballot,body):
-    import cStringIO
+    from io import StringIO
     attachment = mail.Attachment(
         filename=ballot.ballot_uuid+'.html',
-        payload=cStringIO.StringIO(ballot.ballot_content))
+        payload=StringIO(ballot.ballot_content))
     sender = election.email_sender or mail.settings.sender
     ret = mail.send(to=voter.email,
                     subject='Receipt for %s' % election.title,
@@ -419,7 +418,7 @@ def vote():
         ballot_content = form2ballot(election.ballot_model,
                                      token=ballot.ballot_uuid,
                                      vars=request.post_vars,results=results)
-        signature = 'signature-'+sign(ballot_content,election.private_key)
+        signature = 'signature-'+str(sign(ballot_content,election.private_key))
         ballot.update_record(results=results,
                              ballot_content=ballot_content,
                              signature=signature,
