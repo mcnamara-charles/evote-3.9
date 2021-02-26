@@ -82,3 +82,4 @@ def blank_ballot(token):
     ballot_content = str('<h2>Blank</h2>')
     if token: ballot_content += '<pre>%s</pre>' % str(token)
     return '<div class="ballot">%s</div>' % ballot_content
+# End File
