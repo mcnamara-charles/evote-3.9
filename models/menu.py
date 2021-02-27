@@ -27,6 +27,5 @@ response.menu = [
     (T('Elections'), False, URL('default', 'elections')),
     (T('Features'), False, URL('default', 'features')),
     (T('Support'), False, URL('default', 'support')),
-    (T('Source Code'), False, 'https://github.com/mdipierro/evote'),
+    (T('Source Code'), False, 'https://github.com/mcnamara-charles/evote-3.9'),
 ]
-
