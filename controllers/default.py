@@ -37,7 +37,7 @@ def start():
     election = db.election(request.args(0,cast=int)) or redirect(URL('index'))
     check_closed(election)
     response.subtitle = election.title+T(' / Start')
-    demo = ballot2form(election.ballot_model)
+    demo = ballot2form(election.ballot_model, election.title)
     return dict(demo=demo,election=election)
 
 @auth.requires(auth.user and auth.user.is_manager)
@@ -266,7 +266,7 @@ def results():
     if (DEBUG_MODE or not election.counters or
         not election.deadline or request.now<=election.deadline):
         compute_results(election)
-    form = ballot2form(election.ballot_model, counters=election.counters)
+    form = ballot2form(election.ballot_model, election.title, counters=election.counters)
     return dict(form=form,election=election)
 
 def hash_ballot(text):
@@ -405,7 +405,7 @@ def vote():
             session.flash += T('Your vote was NOT recorded')
         redirect(URL('results',args=election.id))
     response.subtitle = election.title + ' / Vote'
-    form = ballot2form(election.ballot_model, readonly=False)
+    form = ballot2form(election.ballot_model, election.title, readonly=False)
     form.process()
     if form.accepted:
         results = form.vars
@@ -415,7 +415,7 @@ def vote():
             (db.ballot.voted==False).select(
             orderby='<random>',limitby=(0,1),for_update=for_update).first() \
             or redirect(URL('no_more_ballots'))
-        ballot_content = form2ballot(election.ballot_model,
+        ballot_content = form2ballot(election.ballot_model, election.title,
                                      token=ballot.ballot_uuid,
                                      vars=request.post_vars,results=results)
         signature = 'signature-'+str(sign(ballot_content,election.private_key))
