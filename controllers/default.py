@@ -59,7 +59,7 @@ def start_callback():
             if voter:
                 voter_uuid = voter.voter_uuid
             else:
-                # create a voter
+                # create a voter.
                 voter_uuid = 'voter-'+uuid()
                 voter = db.voter.insert(
                     election_id=election.id,
