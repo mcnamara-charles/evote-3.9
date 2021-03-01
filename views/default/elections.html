@@ -4,8 +4,7 @@
   <div class="fill">
     <div class="padded">
       {{if auth.user.is_manager:}}
-      <h3>Create a new election</h3>
-      {{=A(T('New Election'),_href=URL('edit'),_class="btn")}}
+      {{=A(T('Create  Election'),_href=URL('edit'),_class="btn")}}
       {{pass}}
 
       <h2>My Elections</h2>
@@ -29,7 +28,7 @@
         {{pass}}
       </table>
       {{else:}}
-      <h4>No elections require your vote</h4>
+      <p>No elections require your vote</p>
       {{pass}}
 
       {{if elections:}}
@@ -71,7 +70,7 @@
         {{pass}}
       </table>
       {{else:}}
-      <h4>There are no elections managed by you</h4>
+      <p>There are no elections managed by you</p>
       {{pass}}
     </div>
   </div>
