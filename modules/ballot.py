@@ -28,19 +28,24 @@ def sign(text,privkey_pem):
     signature = base64.b16encode(rsa.sign(text,privkey,'SHA-1'))
     return signature
 
-def ballot2form(ballot_model, readonly=False, vars=None, counters=None):
+def ballot2form(ballot_model, title, readonly=False, vars=None, counters=None):
     """If counters is passed this counts the results in the ballot.
     If readonly is False, then the voter has not yet voted; if readonly
     is True, then they have just voted."""
     ballot_structure = json.loads(ballot_model)
-    ballot = FORM()
+    ballot = FORM(_class="eballot")
+    header = H2(_class="ballot-title")
+    header.append(title)
+    ballot.append(header)
     for question in ballot_structure:
         div = DIV(_class="question")
+        divi = DIV(_class="center-box")
+        div.append(divi)
         ballot.append(div)
         html = MARKMIN(question['preamble'])
-        div.append(html)
+        divi.append(html)
         table = TABLE()
-        div.append(table)
+        divi.append(table)
         name = question['name']
         if counters:
             options = []
@@ -73,8 +78,8 @@ def ballot2form(ballot_model, readonly=False, vars=None, counters=None):
         ballot.append(INPUT(_type='submit', _value="Submit Your Ballot!"))
     return ballot
 
-def form2ballot(ballot_model, token, vars, results):
-    ballot_content = str(ballot2form(ballot_model, readonly=True, vars=vars).xml())
+def form2ballot(ballot_model, title, token, vars, results):
+    ballot_content = str(ballot2form(ballot_model, title, readonly=True, vars=vars).xml())
     if token: ballot_content += '<pre>%s</pre>' % str(token)
     return '<div class="ballot">%s</div>' % ballot_content.strip()
 
