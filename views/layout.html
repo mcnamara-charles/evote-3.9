@@ -4,10 +4,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
-    <link href="{{=URL('static','css/stupid.css')}}" rel="stylesheet" type="text/css"/>
+    <link href="{{=URL('static','css/theme.css')}}" rel="stylesheet" type="text/css"/>
+    <link href="{{=URL('static','css/scaffolding.css')}}" rel="stylesheet" type="text/css"/>
+    <link href="{{=URL('static','css/radio.css')}}" rel="stylesheet" type="text/css"/>
     <link href="{{=URL('static','css/calendar.css')}}" rel="stylesheet" type="text/css"/>
     <link href="{{=URL('static','css/web2py.css')}}" rel="stylesheet" type="text/css"/>
+    <link rel="shortcut icon" type="image/jpg" href='{{=URL('static','images/favicon.png')}}'/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+    <title>E-Vote v1.00.01</title>
     {{include "web2py_ajax.html"}}
   </head>
   <body class="black">
@@ -48,10 +52,12 @@
       <div class="container padded max900">
         <div class="fill">
           Copyright © 2021 - Powered by <a href="http://cmcn.tech">CMCN Tech®</a>
+          <span class="version-name">v1.00.01
         </div>
       </div>
     </footer>
   </body>
+  <script src="{{=URL('static','js/ham.js')}}"></script>
   <script src="{{=URL('static','js/jquery-sortable.js')}}"></script>
   <script src="{{=URL('static','js/evote.js')}}"></script>
   <script>
