@@ -42,7 +42,7 @@ def ballot2form(ballot_model, title, readonly=False, vars=None, counters=None):
         divi = DIV(_class="center-box")
         div.append(divi)
         ballot.append(div)
-        html = MARKMIN(question['preamble'])
+        html = H3(question['preamble'], _class="b-q-title")
         divi.append(html)
         table = TABLE()
         divi.append(table)
@@ -62,14 +62,22 @@ def ballot2form(ballot_model, title, readonly=False, vars=None, counters=None):
             key = name + '/simple-majority/' + answer
             if not counters:
                 if question['algorithm'] == 'simple-majority':
-                    inp = INPUT(_name=question['name'], _type="radio", _value=answer)
+                    global lab
+                    lab = LABEL(_name=question['name'])
+                    lab.append(answer)
+                    lab = create_label(answer, question['name'])
+                    global inp;
+                    inp = INPUT(_class="radio", _name=question['name'], _type="radio", _value=answer)
                 if vars and vars.get(name) == answer:
                     inp['_checked'] = True
                 if readonly:
                     inp['_disabled'] = True
             else:
                 inp = STRONG(counters.get(key, 0))
-            table.append(TR(TD(inp),TD(answer)))
+            opp = DIV(_class="radio__control")
+            opp.append(inp)
+            opp.append(lab)
+            table.append(TR(TD(opp)))
         if question['comments']:
             value = readonly and vars.get(question['name']+'_comments') or ''
             textarea =  TEXTAREA(value, _disabled=readonly, _name=question['name']+'_comments')
@@ -87,3 +95,8 @@ def blank_ballot(token):
     ballot_content = str('<h2>Blank</h2>')
     if token: ballot_content += '<pre>%s</pre>' % str(token)
     return '<div class="ballot">%s</div>' % ballot_content
+
+def create_label(text, key):
+    label = LABEL(_name=key)
+    label.append(text)
+    return label
