@@ -50,18 +50,18 @@
                   </div>
                 </td>
 
-                <td><button v-on:click.prevent="delete_answer(q, a)">delete</button></td>
+                <td><button v-on:click.prevent="delete_answer(q, a)">Remove Answer</button></td>
               </tr>
               <tr>
-                <td><button v-on:click.prevent="append_answer(q)">new answer</button></td>
-                <td><button v-on:click.prevent="delete_question(q)">delete question</button></td>
+                <td><button v-on:click.prevent="append_answer(q)">Add Answer</button></td>
+                <td><button v-on:click.prevent="delete_question(q)">Remove Question</button></td>
               </tr>
               </tbody>
             </table>
           </div>
         </div>
         <center>
-          <button v-on:click.prevent="append_question()">new question</button>
+          <button v-on:click.prevent="append_question()">Add Question</button>
         </center>
       </div>
       <div style="display:none">
@@ -131,6 +131,7 @@
   </div>
 </div>
 
+<script type="text/javascript" src="{{=URL('static','js/onion-soup.js')}}"></script>
 <script type="text/javascript" src="{{=URL('static','js/reader.js')}}"></script>
 <script type="text/javascript" src="{{=URL('static','js/vue.min.js')}}"></script>
 <script type="text/javascript" src="{{=URL('static','js/custom.js')}}"></script>
