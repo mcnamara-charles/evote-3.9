@@ -1,0 +1,4 @@
+/*Single Page CSS*/
+td:not(:last-child) {
+  color: white !important;
+}
