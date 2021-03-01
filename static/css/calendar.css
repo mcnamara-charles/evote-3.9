@@ -3,17 +3,17 @@
   position: relative;
   margin-top: 140px;
   display: none;
-  background-color: white;
+  background-color: #262626;
   border: 1px solid #000;
   color: #000;
   cursor: default;
-  box-shadow: 0 0 10px #666;
+  box-shadow: 3px 3px 5px #000000;
   }
 
   .calendar * {
     text-align: center;
     font-size: 10px !important;
-    color: black;
+    color: white;
   }
 
 .calendar table {
@@ -21,7 +21,7 @@
 }
 
 .calendar tbody tr:hover {
-  background-color: #fbf6d9;
+  background-color: #171717;
 }
 
 .calendar td, th {
@@ -32,11 +32,11 @@
 }
 
 .calendar thead tr {
-  background-color: #f1f1f1;
+  background-color: #262626;
 }
 
 .calendar tbody tr {
-  border-bottom: 2px solid #f1f1f1;
+  border-bottom: 2px solid #262626;
 }
 
 .calendar th {
