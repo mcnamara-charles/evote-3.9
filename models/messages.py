@@ -1,4 +1,4 @@
-db.election.title.default = 'Election title'
+db.election.title.default = 'Election Title'
 
 db.election.ballot_model.default = """
 <h2>Election Title</h2>
