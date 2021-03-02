@@ -13,10 +13,9 @@ for (i = 0; i < tar.length; i++) {
 }
 
 for (i = 0; i < ins.length; i++) {
-  if (ins[i].type === "text") {
+  if (ins[i].type === "text" || ins[i].type === "password") {
     arr.push(ins[i]);
   } else if (ins[i].type === "checkbox") {
-    console.log("Attempting to uncheck box");
     ins[i].checked = false;
   }
 }
