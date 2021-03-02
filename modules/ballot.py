@@ -63,7 +63,6 @@ def ballot2form(ballot_model, title, readonly=False, vars=None, counters=None):
             global lab
             if not counters:
                 if question['algorithm'] == 'simple-majority':
-                    lab.append(answer)
                     lab = create_label(answer, question['name'])
                     global inp;
                     inp = INPUT(_class="radio", _name=question['name'], _type="radio", _value=answer)
