@@ -18,7 +18,7 @@
             <i class="icon-folder-close"></i>
             {{=ballot.election.title}} ({{=ballot.election.id}})
           </td>
-          <td>
+          <td class="dd-mobile">
             Created on {{=ballot.election.created_on}}
           </td>
           <td>
@@ -45,7 +45,7 @@
             {{pass}}
             <i class="icon-folder-close"></i> {{=election.title}}
           </td>
-          <td>
+          <td class="dd-mobile">
             Created on {{=election.created_on}}
             {{if election.closed:}}(closed){{pass}}
           </td>
