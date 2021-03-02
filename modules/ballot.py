@@ -44,8 +44,8 @@ def ballot2form(ballot_model, title, readonly=False, vars=None, counters=None):
         ballot.append(div)
         html = H3(question['preamble'], _class="b-q-title")
         divi.append(html)
-        table = TABLE()
-        divi.append(table)
+        cont = DIV(_class='question-holder')
+        divi.append(cont)
         name = question['name']
         if counters:
             options = []
@@ -76,7 +76,7 @@ def ballot2form(ballot_model, title, readonly=False, vars=None, counters=None):
             opp = DIV(_class="radio__control")
             opp.append(inp)
             opp.append(lab)
-            table.append(TR(TD(opp)))
+            cont.append(opp)
         if question['comments']:
             value = readonly and vars.get(question['name']+'_comments') or ''
             textarea =  TEXTAREA(value, _disabled=readonly, _name=question['name']+'_comments')
