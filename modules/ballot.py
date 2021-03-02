@@ -60,10 +60,9 @@ def ballot2form(ballot_model, title, readonly=False, vars=None, counters=None):
                 random.shuffle(options)
         for answer in options:
             key = name + '/simple-majority/' + answer
+            global lab
             if not counters:
                 if question['algorithm'] == 'simple-majority':
-                    global lab
-                    lab = LABEL(_name=question['name'])
                     lab.append(answer)
                     lab = create_label(answer, question['name'])
                     global inp;
@@ -73,6 +72,7 @@ def ballot2form(ballot_model, title, readonly=False, vars=None, counters=None):
                 if readonly:
                     inp['_disabled'] = True
             else:
+                lab = create_label(answer, question['name'])
                 inp = STRONG(counters.get(key, 0))
             opp = DIV(_class="radio__control")
             opp.append(inp)
