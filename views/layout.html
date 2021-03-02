@@ -12,7 +12,7 @@
     <link href="{{=URL('static','css/mobile-only.css')}}" rel="stylesheet" type="text/css"/>
     <link rel="shortcut icon" type="image/jpg" href='{{=URL('static','images/favicon.png')}}'/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
-    <title>E-Vote v1.01.00</title>
+    <title>E-Vote v1.01.01</title>
     {{include "web2py_ajax.html"}}
   </head>
   <body class="black">
@@ -38,7 +38,7 @@
       </div>
     </header>
     {{if request.function=='index':}}
-    <div class="fill relative" style="height:320px;background:url('{{=URL('static','images/woman.jpg')}}') center center; background-color: black; background-repeat: no-repeat">
+    <div class="fill relative header__image" style="height:320px;background:url('{{=URL('static','images/evoteheadertemp.jpg')}}') center center; background-color: black; background-repeat: no-repeat">
     </div>
     {{pass}}
     <main class="white">
@@ -54,7 +54,7 @@
       <div class="container padded max900">
         <div class="fill">
           Copyright © 2021 - Powered by <a href="http://cmcn.tech">CMCN Tech®</a>
-          <span class="version-name">v1.01.00
+          <span class="version-name">v1.01.01
         </div>
       </div>
     </footer>
