@@ -1,0 +1,29 @@
+@media only screen and (max-width: 599px) {
+  .container {
+    margin-right: 0px;
+  }
+
+  div.half.nopad, div.half.nopad p {
+    text-align: center !important;
+  }
+
+  div.half.nopad strong {
+    margin-bottom: 5px;
+  }
+
+  ul.menu:not(.right) li {
+    margin-bottom: 5px;
+  }
+
+  .dd-mobile {
+    display: none;
+  }
+
+  select {
+    margin-bottom: 10px;
+  }
+
+  .np-mobile {
+    padding: 0;
+  }
+}
