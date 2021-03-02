@@ -20,7 +20,6 @@ for (i = 0; i < ins.length; i++) {
   }
 }
 
-
 for (i = 0 ; i < arr.length; i++) {
   var grandparent = arr[i].parentElement
   var parent = gemma.createElement("DIV");
